@@ -1,28 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pizza } from './models/pizza';
+import { PizzaService } from './services/pizza.service';
 
-const PIZZAS : Pizza[] = [
-  { id: 1, name: 'Reine', price: 12.99, picture: '..//assets/pizza-1.png' },
-  { id: 2, name: '4 fromages', price: 13.99, picture: '..//assets/pizza-2.png' },
-  { id: 3, name: 'Orientale', price: 11.99, picture: '..//assets/pizza-3.png' },
-  { id: 4, name: 'Cannibale', price: 9.99, picture: '..//assets/pizza-4.png' }
-];
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  
-    
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'PizzaParty';
   selectedPizza: Pizza;
-  pizzaList = PIZZAS;
+  pizzaList: Pizza[];
+
+  constructor(private pizzaService: PizzaService) {}
+
+  ngOnInit(){
+    console.log('je suis initialisé');
+    // var self = this;
+    // this.pizzaService.getPizzas().then(function(pizzas){
+    //   self.pizzaList = pizzas;
+    // });
+
+    this.pizzaService.getPizzas().then(pizzas => this.pizzaList = pizzas);
+  }
+
   onSelect(pizza: Pizza): void {
     console.log(pizza);
     this.selectedPizza = pizza;
   }
   
 }
-
