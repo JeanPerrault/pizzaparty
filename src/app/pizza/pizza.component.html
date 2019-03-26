@@ -5,7 +5,9 @@
         <img class="img-fluid" [src]="pizza.picture" [alt]="pizza.name">
         <label>Nom:</label>
         <input class="form-control" [(ngModel)]="pizza.name">
-        <label>Prix:</label> {{ pizza.price }}
+        <label>Prix:</label> {{ pizza.price }} &euro; <br>
+        <label>Prix à payer:</label> {{ pizza.price*total }} &euro;
+        <app-counter value="1" (increase)="OnIncrement($event)" (decrease)="OnDecrement($event)"></app-counter>
       </div>
     </div>
   </div>

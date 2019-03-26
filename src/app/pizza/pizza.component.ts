@@ -8,4 +8,12 @@ import { Pizza } from '../models/pizza';
 })
 export class PizzaComponent {
   @Input() pizza: Pizza;
+  total: number = 1;
+
+  OnIncrement(event){
+    this.total += event;
+  }
+  OnDecrement(event){
+    this.total -= event;
+  }
 }
