@@ -1,0 +1,13 @@
+$color: red;
+
+h1 {
+    color: $color;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.selected {
+    box-shadow: 2px 2px 4px 4px red;
+}
