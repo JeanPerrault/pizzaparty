@@ -16,12 +16,13 @@ const PIZZAS : Pizza[] = [
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pizzaparty';
+  title = 'PizzaParty';
   selectedPizza: Pizza;
   pizzaList = PIZZAS;
   onSelect(pizza: Pizza): void {
     console.log(pizza);
     this.selectedPizza = pizza;
-}
+  }
+  
 }
 

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent  {
+  @Input() logo: string;
+  isCollapsed: boolean = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  toggleCollapseNavbar() {
+    this.isCollapsed = !this.isCollapsed;
   }
-
 }
+
+
