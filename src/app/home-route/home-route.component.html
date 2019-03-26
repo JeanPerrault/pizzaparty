@@ -1,0 +1,27 @@
+
+
+<h1 class=text-center>Welcome to {{ title }} ! Bon Appétit......</h1>
+
+<div class="container">
+
+    <h2>Total : {{ total}}</h2>
+
+    <app-counter value="0" (increase)="OnIncrement($event)" (decrease)="OnDecrement($event)"></app-counter>
+
+    <app-counter value="0" (increase)="OnIncrement($event)" (decrease)="OnDecrement($event)"></app-counter>
+
+    <app-counter value="0" (increase)="OnIncrement($event)" (decrease)="OnDecrement($event)"></app-counter>
+
+    <app-counter value="0" (increase)="OnIncrement($event)" (decrease)="OnDecrement($event)"></app-counter>
+
+<!--
+
+    on va creer un component Counter
+    ce component affichera une valeur qui pourra etre initialisée dans un attribut (value)
+    Avant la valeur, on aura un bouton "-" (au clic la valeur diminue)
+    Apres la valeur, on aura un bouton "+" (au clic la valeur augmente)
+
+    La valeur devra etre bloquée entre 0 et 9
+
+-->
+</div>

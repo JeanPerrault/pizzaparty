@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <!-- <h1 class="mt-4">{{ title }}</h1> -->
+    <app-pizza [pizza]="selectedPizza"></app-pizza>
+</div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-3" *ngFor="let pizza of pizzaList">
+        <div [class.selected]="pizza === selectedPizza" class="card">
+          <img class="card-img-top" [src]="pizza.picture" [alt]="pizza.name">
+          <div class="card-body">
+            <h4>{{ pizza.name }}</h4>
+            <h4>{{ pizza.price }} &euro;</h4>
+            <a class="btn btn-primary" (click)="onSelect(pizza)">Voir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

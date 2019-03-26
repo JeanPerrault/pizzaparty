@@ -8,22 +8,14 @@
       <div class="collapse navbar-collapse" [class.show]="isCollapsed" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home </a>
+            <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" routerLink="/pizzas" routerLinkActive="active">Pizzas</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1">Pricing</a>
+            </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
           </li>

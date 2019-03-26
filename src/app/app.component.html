@@ -1,30 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-  <h1 class=text-center>Welcome to {{ title }} !</h1>
+  <h1 class=text-center>Bienvenue chez {{ title }} !</h1>
 
   <app-menu [logo]="title"></app-menu>
-  <!-- <app-menu></app-menu> -->
-
   
+  <router-outlet></router-outlet>
 
-  <div class="container">
-      <!-- <h1 class="mt-4">{{ title }}</h1> -->
-      <app-pizza [pizza]="selectedPizza"></app-pizza>
-  </div>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3" *ngFor="let pizza of pizzaList">
-          <div [class.selected]="pizza === selectedPizza" class="card" (click)="onSelect(pizza)">
-            <img class="card-img-top" [src]="pizza.picture" [alt]="pizza.name">
-            <div class="card-body">
-              <h4>{{ pizza.name }}</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <app-footer title="PizzaParty"></app-footer>
+  <app-footer title="PizzaParty"></app-footer>
     
 
