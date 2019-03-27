@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PizzasRouteComponent } from './pizzas-route/pizzas-route.component';
 import { HomeRouteComponent } from './home-route/home-route.component';
 import { CounterComponent } from './counter/counter.component';
+import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { CounterComponent } from './counter/counter.component';
     MenuComponent,
     PizzasRouteComponent,
     HomeRouteComponent,
-    CounterComponent
+    CounterComponent,
+    PizzaSingleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       { path: 'pizzas',component: PizzasRouteComponent },
-      { path: 'home',component: HomeRouteComponent }
+      { path: 'home',component: HomeRouteComponent },
+      { path: 'pizza/:id',component: PizzaSingleComponent}
     ])
   ],
   providers: [],
