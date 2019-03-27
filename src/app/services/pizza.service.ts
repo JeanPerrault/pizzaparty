@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Pizza } from '../models/pizza';
+import { HttpClient } from '@angular/common/http';
 
-const PIZZAS: Pizza[] = [
-  { id: 1, name: 'Reine', price: 12.99, picture: '..//assets/pizza-1.png' },
-  { id: 2, name: '4 fromages', price: 13.99, picture: '..//assets/pizza-2.png' },
-  { id: 3, name: 'Orientale', price: 11.99, picture: '..//assets/pizza-3.png' },
-  { id: 4, name: 'Cannibale', price: 9.99, picture: '..//assets/pizza-4.png' }
-];
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PizzaService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 /**
  * permet de recuperer un tableau de pizzas
  */
-  getPizzas(): Promise<Pizza[]>{
-    return Promise.resolve(PIZZAS);
+  getPizzas(): Promise<Pizza[]> {
+    return this.http.get('api/pizzas').toPromise().then(
+      response => response as Pizza[]
+    );
   }
-
   /**
    * Recuperer une pizza par son id
    * 
@@ -29,19 +26,35 @@ export class PizzaService {
     // return this.getPizzas().then(pizzas => {
     //   return pizzas.find(pizza => {
     //     return pizza.id === id;
-    return this.getPizzas().then(
-      pizzas => pizzas.find(pizza =>  pizza.id === id)
-      );
-    
+
+    // return this.getPizzas().then(
+    //   pizzas => pizzas.find(pizza =>  pizza.id === id)
+    //   );
+
+    return this.http.get('api/pizzas/'+id).toPromise().then(
+      response => response as Pizza
+    )
   }
 
   /**
    * recuperer le nombre de pizzas
    */
   countPizza(): Promise<number> {
-    return Promise.resolve(PIZZAS.length);
+    //return Promise.resolve(PIZZAS.length);
+
+    return this.http.get('api/total/').toPromise().then(
+      response => response as number
+    );
   }
 
+  /**
+   * creer une pizza
+   */
+  createPizza(pizza: Pizza): Promise<Pizza> {
+      return this.http.post('api/pizzas',pizza).toPromise().then(
+        response => response as Pizza
+      )
+  }
 
   /**
    * permet de simuiler une mauvaise connection
