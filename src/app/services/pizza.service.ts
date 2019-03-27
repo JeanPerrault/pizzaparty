@@ -14,11 +14,38 @@ const PIZZAS: Pizza[] = [
 export class PizzaService {
 
   constructor() { }
-
+/**
+ * permet de recuperer un tableau de pizzas
+ */
   getPizzas(): Promise<Pizza[]>{
     return Promise.resolve(PIZZAS);
   }
 
+  /**
+   * Recuperer une pizza par son id
+   * 
+   */
+  getPizza(id: number): Promise<Pizza>{
+    // return this.getPizzas().then(pizzas => {
+    //   return pizzas.find(pizza => {
+    //     return pizza.id === id;
+    return this.getPizzas().then(
+      pizzas => pizzas.find(pizza =>  pizza.id === id)
+      );
+    
+  }
+
+  /**
+   * recuperer le nombre de pizzas
+   */
+  countPizza(): Promise<number> {
+    return Promise.resolve(PIZZAS.length);
+  }
+
+
+  /**
+   * permet de simuiler une mauvaise connection
+   */ 
   getPizzasSlowly(): Promise<Pizza[]>{
     return new Promise(resolve => {
       setTimeout(()=>resolve(this.getPizzas()),2000);
