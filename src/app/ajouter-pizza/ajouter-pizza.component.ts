@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from '../models/pizza';
 import { PizzaService } from '../services/pizza.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-pizza',
@@ -15,10 +16,15 @@ export class AjouterPizzaComponent {
 
   pizza: Pizza = new Pizza()
 
-  constructor(private pizzaService: PizzaService){ }
+  constructor(
+    private pizzaService: PizzaService,
+    private router: Router
+  ){ }
 
   create() {
     console.log(this.pizza);
-    this.pizzaService.createPizza(this.pizza);
+    this.pizzaService.createPizza(this.pizza).then(
+      ()=> this.router.navigate(['/pizzas'])
+    );
   }
 }

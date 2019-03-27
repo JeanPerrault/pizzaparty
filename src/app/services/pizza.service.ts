@@ -57,6 +57,23 @@ export class PizzaService {
   }
 
   /**
+   * modifier une pizza
+   */
+  updatePizza(pizza: Pizza): Promise<Pizza> {
+    return this.http.put('api/pizzas/' + pizza.id, pizza)
+    .toPromise().then(
+      response => response as Pizza
+    );
+  }
+
+  /**
+   * suppriler une pizza
+   */
+  delete(id: number): Promise<void> {
+    return this.http.delete('api/pizzas/' + id).toPromise().then(() => null)
+  }
+
+  /**
    * permet de simuiler une mauvaise connection
    */ 
   getPizzasSlowly(): Promise<Pizza[]>{

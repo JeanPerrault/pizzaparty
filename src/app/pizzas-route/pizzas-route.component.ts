@@ -28,5 +28,10 @@ export class PizzasRouteComponent implements OnInit {
     this.selectedPizza = pizza;
   }
 
-
+  delete(pizza: Pizza) {
+    this.pizzaService.delete(pizza.id).then(()=>{
+      this.pizzaList = this.pizzaList.filter(p => p !== pizza);
+      this.selectedPizza = null;
+    });
+  }
 }
